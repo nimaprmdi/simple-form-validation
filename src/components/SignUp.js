@@ -111,7 +111,7 @@ const SignUp = () => {
 
                 <div className={styles.formField}>
                     <div className={styles.checkBoxContainer}>
-                        <label>I accet terms of privacy policy</label>
+                        <label>I accept terms of privacy policy</label>
                         <input
                             type="checkbox"
                             name="isAccepted"
