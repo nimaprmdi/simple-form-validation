@@ -1,12 +1,5 @@
-export const validate = (data) => {
+export const validate = (data, type) => {
     const errors = {};
-
-    /** Name */
-    if (!data.name.trim()) {
-        errors.name = "Name is Required";
-    } else {
-        delete errors.name;
-    }
 
     /** Email */
     if (!data.email) {
@@ -28,22 +21,31 @@ export const validate = (data) => {
         delete errors.password;
     }
 
-    /** Password Confirm */
-    if (!data.confirmPassword) {
-        errors.confirmPassword = "Confirm Password is Empty";
-    } else if (data.confirmPassword !== data.password) {
-        errors.confirmPassword = "Confrim Password Is not match with Password";
-    } else {
-        delete errors.confirmPassword;
-    }
+    if (type === "signup") {
+        /** Name */
+        if (!data.name.trim()) {
+            errors.name = "Name is Required";
+        } else {
+            delete errors.name;
+        }
 
-    /** isAccept */
-    if (data.isAccepted) {
-        console.log(data.isAccepted);
-        delete errors.isAccepted;
-    } else {
-        console.log(data.isAccepted);
-        errors.isAccepted = "Should Accept The Policy";
+        /** Password Confirm */
+        if (!data.confirmPassword) {
+            errors.confirmPassword = "Confirm Password is Empty";
+        } else if (data.confirmPassword !== data.password) {
+            errors.confirmPassword = "Confrim Password Is not match with Password";
+        } else {
+            delete errors.confirmPassword;
+        }
+
+        /** isAccept */
+        if (data.isAccepted) {
+            console.log(data.isAccepted);
+            delete errors.isAccepted;
+        } else {
+            console.log(data.isAccepted);
+            errors.isAccepted = "Should Accept The Policy";
+        }
     }
 
     return errors;
